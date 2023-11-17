@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de cadastro de aluno",
+    "description": "Essa API tem como objetivo capturar as informações do aluno para depois salvar no banco de dados",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/signin-user": {
+      "post": {
+        "summary": "Cadastro de aluno",
+        "description": "Essa rota será responsável por cadastrar um novo aluno",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Aluno cadastrado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao cadastrar o aluno"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100,
+            "required": true
+          },
+          "username": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100,
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 20,
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
